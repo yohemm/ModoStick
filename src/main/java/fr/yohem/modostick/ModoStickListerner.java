@@ -17,7 +17,8 @@ public class ModoStickListerner implements Listener {
         if (playerInteractEvent.getRightClicked() instanceof Player && p.getInventory().getItemInMainHand().equals(ModoStick.getStick())){
             if (p.hasPermission("stick.use")){
                 p.sendMessage(playerInteractEvent.getRightClicked().getName());
-                modoStick.hidePlayerName((Player)playerInteractEvent.getRightClicked());
+                modoStick.hide((Player)playerInteractEvent.getRightClicked(), p);
+                // modoStick.hidePlayerName((Player)playerInteractEvent.getRightClicked());
             }else{
                 p.sendMessage("Petit tricheur à la prochainne filouterie, la sentence risque d'être irrévocable");
                 p.getInventory().removeItem(ModoStick.getStick());
@@ -27,6 +28,6 @@ public class ModoStickListerner implements Listener {
 
     @EventHandler
     public void onJoin(PlayerJoinEvent event){
-        modoStick.hidePlayerName(event.getPlayer());
+        // modoStick.hidePlayerName(event.getPlayer());
     }
 }
