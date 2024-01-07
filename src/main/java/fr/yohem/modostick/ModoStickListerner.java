@@ -1,5 +1,7 @@
 package fr.yohem.modostick;
 
+import java.util.ArrayList;
+
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -17,7 +19,7 @@ public class ModoStickListerner implements Listener {
         if (playerInteractEvent.getRightClicked() instanceof Player && p.getInventory().getItemInMainHand().equals(ModoStick.getStick())){
             if (p.hasPermission("stick.use")){
                 p.sendMessage(playerInteractEvent.getRightClicked().getName());
-                modoStick.hide((Player)playerInteractEvent.getRightClicked(), p);
+                modoStick.unhide((Player)playerInteractEvent.getRightClicked(), p);
                 // modoStick.hidePlayerName((Player)playerInteractEvent.getRightClicked());
             }else{
                 p.sendMessage("Petit tricheur à la prochainne filouterie, la sentence risque d'être irrévocable");
@@ -28,6 +30,7 @@ public class ModoStickListerner implements Listener {
 
     @EventHandler
     public void onJoin(PlayerJoinEvent event){
+        modoStick.fullHide(event.getPlayer());
         // modoStick.hidePlayerName(event.getPlayer());
     }
 }
